@@ -1,0 +1,34 @@
+<h1>Book Collections</h1>
+
+<table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="Title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let book"> {{book.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Author">
+        <th mat-header-cell *matHeaderCellDef> Author </th>
+        <td mat-cell *matCellDef="let book"> {{book.author}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Isbn">
+        <th mat-header-cell *matHeaderCellDef> Isbn </th>
+        <td mat-cell *matCellDef="let book"> {{book.isbn}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="PublishedDate">
+      <th mat-header-cell *matHeaderCellDef> Published Date </th>
+      <td mat-cell *matCellDef="let book"> {{book.publishedDate | date:"MMM dd, yyyy 'at' hh:mm a"}} </td>
+  </ng-container>
+
+    <ng-container matColumnDef="Update">
+        <th mat-header-cell *matHeaderCellDef> Update </th>
+        <td mat-cell *matCellDef="let book">
+            <button mat-raised-button color="primary" (click)="onUpdate(book)">Update</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+</table>

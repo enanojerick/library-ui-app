@@ -1,0 +1,44 @@
+<div id="mainContent">
+    <h1>New Book</h1>
+
+    <div id="bookCard">
+        <form [formGroup]="createForm" (ngSubmit)="onSubmit()" class="myform">
+            <mat-card>
+                <mat-card-content>
+                    <div class="myInputs">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Title</mat-label>
+                            <input matInput formControlName="title">
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Author</mat-label>
+                            <input matInput formControlName="author">
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Isbn</mat-label>
+                            <input matInput formControlName="isbn">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                          <mat-label>Published Date</mat-label>
+                          <input name="PublishedDate" matInput [matDatepicker]="picker"
+                                  class="form-control" placeholder="Date"
+                                  formControlName="publishedDate">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </mat-card-content>
+
+                <mat-card-actions align="end">
+                    <button class="actionButtons" (click)="onCancel()" type="button" mat-raised-button
+                        color="warn">Cancel</button>
+                    <button class="actionButtons" [disabled]="createForm.invalid" type="submit" mat-raised-button
+                        color="primary">Create</button>
+                </mat-card-actions>
+            </mat-card>
+        </form>
+    </div>
+</div>

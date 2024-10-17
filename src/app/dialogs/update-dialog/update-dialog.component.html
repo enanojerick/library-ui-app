@@ -1,0 +1,36 @@
+<div id="updateForm">
+
+    <h1 id="updateBookTitle">Update Book</h1>
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" class="myform">
+
+        <div class="myInputs">
+            <mat-form-field class="example-full-width">
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Author</mat-label>
+                <input matInput formControlName="author">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Isbn</mat-label>
+                <input matInput formControlName="isbn">
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Published Date</mat-label>
+              <input name="PublishedDate" matInput [matDatepicker]="picker"
+                      class="form-control" placeholder="Date"
+                      formControlName="publishedDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <button class="actionButtons" type="button" mat-dialog-close mat-raised-button color="warn">Cancel</button>
+        <button class="actionButtons" [disabled]="updateForm.invalid" type="submit" mat-raised-button
+            color="primary">Update</button>
+    </form>
+</div>
